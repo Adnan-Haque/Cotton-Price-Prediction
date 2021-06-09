@@ -1,0 +1,13 @@
+.container{
+    display: flex !important;
+    justify-content: center !important;
+}
+
+.formDiv{
+    margin-top: 50px;
+}
+
+.btn{
+    width: 100%;
+    margin-bottom: 40px;
+}

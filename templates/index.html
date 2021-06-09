@@ -1,0 +1,251 @@
+{% extends 'base.html' %}
+
+{% block htmlscript %}
+<link rel="stylesheet" href="../static/css/home.css">
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+{% endblock htmlscript %}
+{% block title %}
+Home page
+{% endblock title %}
+
+<body>
+    {% block parent %}
+    <div class="parent">
+        {% endblock parent %}
+        {% block body %}
+        <div class="container">
+            <div class="my-header">
+                <h1 class="display-1" id="header">ECPI</h1>
+            </div>
+            <div class="para">
+                <p class="para1">ECPI stands for Estimation of Cotton Prices in India</p>
+                <p class="para1">It a platform where a persong can predict the prices of cotton in india by giving
+                    inputs like month, year, variety, district</p>
+            </div>
+            <div class="starting">
+                <a href="/pred" class="btn btn-dark btn-block"> Get Started </a>
+                <a href="/login" class="btn btn-light btn-block">Sign In</a>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div id="Accuracy" class="shadow p-3 mb-5 bg-white rounded" data-aos="fade-up">
+            <div class=row>
+                <div class="col-12 col-lg-6">
+                    <h1 class="display-2" style="font-weight: 500;">Accuracy</h1>
+                    <P>
+                        Our Model utmost show the Accuracy of different states upto 90%<br>
+                        different states have different Accuracy but all the states belong in the range of 85-90 precent
+                    </P>
+                </div>
+                <div class="col-12 col-lg-6" id="right-col-1">
+                    <h1 class="display-2" id="percent">90%</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="heading">
+            <h1 class="display-2" id="heading-2">
+                Learning <br> Model
+            </h1>
+            <p id="para-2">
+                here we would learn the dataset and <br> machine learning model implemented
+            </p>
+            <a href="https://data.gov.in/" id="dataSite">To see the raw data from site -></a>
+        </div>
+        <div class="row" id="second-row">
+            <div class="col-md-6 newColumn" data-aos="fade-right">
+                <div class="edupara">
+                    <h3 class="h2">
+                        A better Model has a better dataset
+                    </h3>
+                    <p class="para-3">
+                        As we can see there is more tha 3 columns in the dataset ie , year, district , variety ,
+                        modal_price , month etc.
+                        from this data we can predict the value of the cotton at certain year , month which will be
+                        benificial for others.
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-6 shadow-lg p-3 mb-5 bg-white rounded" data-aos="fade-left">
+                <div>
+                    <img class="images" src="../static/css/images/newData.JPG">
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div class="row" id="second-row">
+            <div class="col-md-6 newColumn" data-aos="fade-right">
+                <div class="edupara">
+                    <h3 class="h2">
+                        Learning how the accuracy works
+                    </h3>
+                    <p class="para-3">
+                        Here we have take two most famous algorithm in the machine learning wordl ie. decision tree and
+                        random forest.
+                        These can predict the value upto 89.99 percent of accuracy.
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-6 shadow-lg p-3 mb-5 bg-white rounded" data-aos="fade-left">
+                <div>
+                    <img class="images" src="../static/css/images/accuracy.JPG">
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div class="row" id="second-row">
+            <div class="col-md-6 newColumn" data-aos="fade-right">
+                <div class="edupara">
+                    <h3 class="h2">
+                        Best Library SKlearn ?
+                    </h3>
+                    <p class="para-3">
+                        In this machine learning model we have used library named sklearn which is open source and
+                        supports python.
+                        python is a very powerful language as it is dynamic as well as contains various libraries such
+                        as sklearn.
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-6 shadow-lg p-3 mb-5 bg-white rounded" data-aos="fade-left">
+                <div>
+                    <img class="images" src="../static/css/images/decisionreg.JPG">
+                    <img class="images" src="../static/css/images/randomreg.JPG">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="accessories">
+        <div id="turnBlack">
+            <div class="container">
+                <h3 class="display-2" id="tech">Technology <br> stack</h3>
+                <p id="paraTech">
+                    We have used various types of technologies like github for project sharing jupyter notebook a
+                    reliable IDE for machine learning models
+                    for webapp we have used Django as framework and for frontend developing we have used html, css ,
+                    javascript with various libraries
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="container" id="lastcont">
+        <div class="last">
+            <div class="row">
+                <div class="col-md-4" id="lastHeader">
+                    ECPI
+                </div>
+                <div class="col-md-8" id="lastdiv">
+                    <div class="row">
+                        <div class=col-md-3>
+                            <p>
+                                Product
+                            </p>
+                            <div class="lastlost">
+                                <a href="#" class="lastlist">Feature</a>
+                            </div>
+                            <div class="lastlost">
+                                <a href="#" class="lastlist">Security</a>
+                            </div>
+                            <div class="lastlost">
+                                <a href="#" class="lastlist">Pricing</a>
+                            </div>
+                            <div class="lastlost">
+                                <a href="#" class="lastlist">Resources</a><br>
+                            </div>
+                            <div class="lastlost">
+                                <a href="#" class="lastlist">READ ME</a><br>
+                            </div>
+                            <div class="lastlost">
+                                <a href="#" class="lastlist">Team</a><br>
+                            </div>
+                        </div>
+                        <div class=col-md-3>
+                            <p>
+                                Platform
+                            </p>
+                            <div class="lastlost">
+                                <a href="#" class="lastlist">Developer API</a>
+                            </div>
+                            <div class="lastlost">
+                                <a href="#" class="lastlist">Creators</a>
+                            </div>
+                            <div class="lastlost">
+                                <a href="#" class="lastlist">Github site</a>
+                            </div>
+                            <div class="lastlost">
+                                <a href="#" class="lastlist">Customers</a><br>
+                            </div>
+                            <div class="lastlost">
+                                <a href="#" class="lastlist">Partners</a><br>
+                            </div>
+                        </div>
+                        <div class=col-md-3>
+                            <p>
+                                Support
+                            </p>
+                            <div class="lastlost">
+                                <a href="#" class="lastlist">Docs</a>
+                            </div>
+                            <div class="lastlost">
+                                <a href="#" class="lastlist">Learning Lab</a>
+                            </div>
+                            <div class="lastlost">
+                                <a href="#" class="lastlist">Status</a>
+                            </div>
+                        </div>
+                        <div class=col-md-3>
+                            <p>
+                                Company
+                            </p>
+                            <div class="lastlost">
+                                <a href="#" class="lastlist">About</a>
+                            </div>
+                            <div class="lastlost">
+                                <a href="#" class="lastlist">Blog</a>
+                            </div>
+                            <div class="lastlost">
+                                <a href="#" class="lastlist">Shop</a>
+                            </div>
+                            <div class="lastlost">
+                                <a href="#" class="lastlist">Career</a><br>
+                            </div>
+                            <div class="lastlost">
+                                <a href="#" class="lastlist">Press</a><br>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="bottom">
+        <div class="container" id="bottom-container">
+            <div class="bottom-left">
+                <p>
+                    @ 2021 ECPI Terms Conditions Privacy Site Map
+                </p>
+            </div>
+            <div class="bottom-right">
+                <i class="fab fa-facebook-square fa-2x lasticon"></i>
+                <i class="fab fa-youtube fa-2x lasticon"></i>
+                <i class="fab fa-twitter fa-2x lasticon"></i>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        AOS.init({
+            duration: 800,
+        })
+    </script>
+</body>
+
+
+
+{% endblock body %}

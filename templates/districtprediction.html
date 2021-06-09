@@ -1,0 +1,126 @@
+{% extends 'newBase.html' %}
+
+{% block title %}
+Predict
+{% endblock title %}
+
+{% block scripts%}
+<script>
+    AOS.init({
+        duration: 800,
+    })
+    var ctx = document.getElementById('myChart');
+    var myChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+            datasets: [
+
+                {% for i in gdata %}
+
+                    {
+            label: '{{ i.0 }}',
+            data: {{ i| slice: "1:" }},
+    backgroundColor: [
+        'rgba(255, 99, 132, 0.2)',
+        'rgba(54, 162, 235, 0.2)',
+        'rgba(255, 206, 86, 0.2)',
+        'rgba(75, 192, 192, 0.2)',
+        'rgba(153, 102, 255, 0.2)',
+        'rgba(255, 159, 64, 0.2)'
+    ],
+        borderColor: [
+            'rgba(255, 99, 132, 1)',
+            'rgba(54, 162, 235, 1)',
+            'rgba(255, 206, 86, 1)',
+            'rgba(75, 192, 192, 1)',
+            'rgba(153, 102, 255, 1)',
+            'rgba(255, 134, 23, 1)',
+            'rgba(234, 111, 235, 1)',
+            'rgba(175, 159, 64, 1)',
+            'rgba(55, 92, 8, 1)',
+            'rgba(255, 159, 64, 1)',
+
+        ],
+            borderWidth: 1
+                    },
+
+    {% endfor %}
+            ]
+        },
+    options: {
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        }
+    }
+    });
+</script>
+
+{% endblock scripts%}
+{% block body %}
+
+{% block htmlscript %}
+{% load static %}
+<script src='{% static "js/dist.js" %}' type="text/javascript"></script>
+<link rel="stylesheet" href="../static/css/prednormal.css">
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+{% endblock htmlscript %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="list-group">
+                <a href="/pred" class="list-group-item list-group-item-action">normal Prediction</a>
+                {% if user.is_authenticated %}
+                <a href="/predict" class="list-group-item list-group-item-action">Prediction</a>
+                <a href="/pred12mon" class="list-group-item list-group-item-action">12 month</a>
+                <a href="/predgraph" class="list-group-item list-group-item-action">District</a>
+                {% endif %}
+            </div>
+        </div>
+        <div class="col-md-9">
+            <form action="/predgraph" method="post">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <select name="year" id="" class="form-select">
+                        <option value="2021">2021</option>
+                        <option value="2022">2022</option>
+                        <option value="2023">2023</option>
+                        <option value="2024">2024</option>
+                        <option value="2025">2025</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <select name="variety" id="variety" class="form-select">
+                        <option value="null">--select variety--</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <input type="text" name="state" id="state" disabled value="{{userstate}}" class="form-control">
+                </div>
+                <input type="submit" class="btn">
+            </form>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-3">
+        </div>
+        <div class="col-md-9">
+            {% if gdata%}
+            <div class="chart-container" data-aos="zoom-in">
+                <canvas id="myChart"></canvas>
+            </div>
+            {% else %}
+
+            {% endif %}
+        </div>
+
+    </div>
+</div>
+
+
+{% endblock body %}

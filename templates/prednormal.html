@@ -1,0 +1,88 @@
+{% extends 'newBase.html' %}
+
+{% block title %}
+Predict
+{% endblock title %}
+
+
+
+{% block body %}
+
+{% block htmlscript %}
+{% load static %}
+<script src='{% static "js/prediction.js" %}' type="text/javascript"></script>
+<link rel="stylesheet" href="../static/css/prednormal.css">
+{% endblock htmlscript %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="list-group">
+                <a href="/pred" class="list-group-item list-group-item-action">normal Prediction</a>
+                {% if user.is_authenticated %}
+                <a href="/predict" class="list-group-item list-group-item-action">Prediction</a>
+                <a href="/pred12mon" class="list-group-item list-group-item-action">12 month</a>
+                <a href="/predgraph" class="list-group-item list-group-item-action">District</a>
+                {% endif %}
+            </div>
+        </div>
+        <div class="col-md-9" id="left">
+            <form action="/pred" method="post">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <select name="month" class="form-select" id="">
+                        <option value="0">--Select Month--</option>
+                        <option value="1">January</option>
+                        <option value="2">February</option>
+                        <option value="3">March</option>
+                        <option value="4">April</option>
+                        <option value="5">May</option>
+                        <option value="6">June</option>
+                        <option value="7">July</option>
+                        <option value="8">August</option>
+                        <option value="9">September</option>
+                        <option value="10">October</option>
+                        <option value="11">November</option>
+                        <option value="12">December</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <select name="state" class="form-select" id="state">
+                        <option value="null">--Select State --</option>
+                        <option value="Andhra Pradesh">Andhra Pradesh</option>
+                        <option value="Gujarat">Gujarat</option>
+                        <option value="Maharashtra">Maharashtra</option>
+                        <option value="Rajasthan">Rajasthan</option>
+                        <option value="Tamil Nadu">Tamil Nadu</option>
+                        <option value="Telangana">Telangana</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <select name="district" id="district" class="form-select">
+                        <option value="null">-- Select a district --</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <select name="variety" id="variety" class="form-select">
+                        <option value="null">--select variety--</option>
+                    </select>
+                </div>
+                <input type="submit" class="btn">
+            </form>
+            {% if variable %}
+            {% if variable == "Error" %}
+            <h3 style="color: red; margin-top: 50px">Error</h3>
+            {% else %}
+            <h3 style="margin-top: 50px ">Predicted value is {{variable}}</h3>
+            {% endif %}
+            <br>
+            {% endif %}
+        </div>
+
+    </div>
+</div>
+
+
+
+
+{% endblock body %}

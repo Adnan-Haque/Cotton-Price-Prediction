@@ -1,0 +1,49 @@
+{% extends 'newBase.html' %}
+
+{% block htmlscript %}
+<link rel="stylesheet" href="../static/css/register.css">
+{% endblock htmlscript %}
+
+{% block title %}
+Register
+{% endblock title %}
+
+{% block body %}
+{{ variable }}
+<div class="container">
+    <div class="formDiv">
+        <form action="/register" method="post">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="username">username:</label>
+                <input type="text" id="username" name="username" class="form-control">
+            </div>
+            <div class="mb-3">
+                <label for="email">email:</label>
+                <input type="email" id="email" name="email" class="form-control">
+            </div>
+            <div class="mb-3">
+                <label for="password">password:</label><br>
+                <input type="password" id="password" name="password" class="form-control">
+            </div>
+            <div class="mb-3">
+                <label for="state">state:</label><br>
+                <select name="state" id="state" class="form-select">
+                    <option value="Andhra Pradesh">Andhra Pradesh</option>
+                    <option value="Gujarat">Gujarat</option>
+                    <option value="Maharashtra">Maharashtra</option>
+                    <option value="Rajasthan">Rajasthan</option>
+                    <option value="Tamil Nadu">Tamil Nadu</option>
+                    <option value="Telangana">Telangana</option>
+                </select>
+            </div>
+            <br>
+            <input type="submit" value="Submit" class="btn btn-success">
+        </form>
+        <p>
+            By creating an account, you agree to the Terms of Service.<br> For more information about ECPI privacy
+            practices, see the ECPI Privacy Statement.<br> We'll occasionally send you account-related emails.
+        </p>
+    </div>
+</div>
+{% endblock body %}

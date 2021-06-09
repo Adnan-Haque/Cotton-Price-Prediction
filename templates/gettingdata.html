@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.2.0/dist/chart.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        canvas#myChart {
+            background-color: #0f0e20;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="myChart"></canvas>
+    <script>
+        const xlabels = [];
+        const ydata = [];
+        async function getData() {
+            const response = await fetch('../static/cotton.csv');
+            const data = await response.text();
+            const table = data.split('\n').slice(1);
+            table.forEach(row => {
+                const columns = row.split(',');
+                const month = columns[0];
+                xlabels.push(month);
+                const price = columns[1];
+                ydata.push(parseFloat(price));
+            });
+        }
+        chartIt();
+        async function chartIt() {
+            await getData();
+            var ctx = document.getElementById('myChart').getContext('2d');
+            var myChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: xlabels,
+                    datasets: [{
+                        label: 'Price of cotton in india (last 10 years)',
+                        pointBorderWidth: 1,
+                        pointHoverRadius: 5,
+                        pointRadius: 3,
+                        data: ydata,
+                        backgroundColor: ['rgba(255, 99, 132, 0.2)'],
+                        borderColor: "#0ED2F7",
+                        borderWidth: 4
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        },
+                    }
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>
